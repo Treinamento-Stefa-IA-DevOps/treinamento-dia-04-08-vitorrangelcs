@@ -5,5 +5,24 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
+    environment:
+      DB_PASS: password123
+      DB_USER: userino
     ports:
       - 5000:5000  # espelha a porta 5000 da sua maquina para a 5000 do container
+    depends_on:
+      - postgres # faz a api subir depois do db
+    networks:
+      - backend  # rede para o db e a api "conversarem"
+
+  postgres:
+    image: postgres # ele busca a imagem automaticamente do dockerhub
+    environment:
+      POSTGRES_PASSWORD: password123 # definição do password do banco
+      POSTGRES_USER: userino # definição do user do banco
+    networks:
+      - backend  # rede para o db e a api "conversarem"
+
+networks:
+  backend:
+    driver: bridge

@@ -1,7 +1,10 @@
 import pickle
 from fastapi import FastAPI
 
-app = FastAPI()
+app = FastAPI(
+    title = 'Api Titanic',
+    description = ''
+)
 @app.post('/model')
 ## Coloque seu codigo na função abaixo
 
