@@ -19,7 +19,7 @@ async def titanic(Sex:int,Age:float, Lifeboat:int, Pclass:int):
         return {
             'survived': bool(predi[0]),
             'status': 200,
-            'message': 'Deu tudo certo \o',
+            'message': 'Deu tudo certo \o' if bool(predi[0]) else 'Não sobreviveu',
         }
     except Exception:
         return {
